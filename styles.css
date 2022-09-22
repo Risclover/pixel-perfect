@@ -11,6 +11,8 @@ html {
   background-color: rgb(250, 250, 250);
   text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
+  z-index: -5;
+  /* line-height: 1.5; */
 }
 
 .looking-to-hire {
@@ -41,6 +43,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid rgb(225, 225, 225);
 }
 
 .frontend-logo {
@@ -61,7 +64,8 @@ html {
 
 .navlink {
   font-family: "Heebo", sans-serif;
-  padding: 0 10px;
+  padding: 0;
+  margin: 0 10px;
   display: flex;
   align-items: center;
   line-height: 21px;
@@ -71,22 +75,91 @@ html {
   position: relative;
 }
 
+/* .navlink:hover {
+  text-decoration: underline;
+  text-decoration-color: red;
+  a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+  }
+} */
+
+.navlink a {
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0;
+  /* margin: 0 10px; */
+  position: relative;
+  color: black;
+}
+
+.navlink::after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: -3px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: rgb(233, 68, 68);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.navlink:hover:after {
+  width: 100%;
+  left: 0;
+}
+/*
+.navlink a:hover::after {
+  width: 80%;
+  left: 11px;
+}
+
+.navlink:after {
+  text-decoration: underline;
+  text-decoration-color: red;
+  cursor: pointer;
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  background: red;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+  left: 11px;
+} */
+
 .navbar-right {
   display: flex;
   align-items: center;
 }
 
 .pro {
-  background-color: #3e54a3;
-  font-size: 12.5px;
-  letter-spacing: 2px;
-  padding: 0 8px;
-  border-radius: 2.5px;
-  color: white;
+  border-radius: 3px;
+  font-size: 12px;
   font-style: normal;
-  margin-left: 8px;
-  margin-bottom: 3px;
-  height: auto;
+  letter-spacing: 2px;
+  padding: 0.2rem 0.6rem;
+  text-transform: uppercase;
+  vertical-align: middle;
+  background-color: rgb(62, 84, 163);
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  margin: 0px;
+  text-decoration: none;
+  margin-left: 5px;
 }
 
 .github-login {
@@ -101,6 +174,13 @@ html {
   border-radius: 100px;
   display: flex;
   align-items: center;
+  transition: 0.5s ease;
+}
+
+.github-login:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: rgb(0 0 0 / 20%) 0px 0.5rem 1rem;
 }
 
 .github {
@@ -115,33 +195,74 @@ html {
   -webkit-box-align: center;
 }
 
+.hero-section {
+  width: 100%;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  position: relative;
+  background: none;
+  z-index: 1;
+}
+
+.hero-section::before,
+.hero-section::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+.hero-section::before {
+  background-image: url("https://www.frontendmentor.io/static/images/bg-layer-1.svg");
+  background-position: 90% center;
+}
+
+.hero-section::after {
+  background-image: url("https://www.frontendmentor.io/static/images/bg-layer-2.svg");
+  background-position: 105% center;
+  display: block;
+  z-index: -1;
+}
+
 .hero {
   display: flex;
   margin: 0 auto;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
   max-width: 1200px;
+  width: 95%;
 }
 
 .hero-left {
   width: 50%;
+  z-index: 10;
 }
 
 .hero-right {
-  width: 50%;
-  margin-right: 30px;
+  width: 40%;
 }
 
 .hero-right img {
-  width: 400px;
+  width: 100%;
 }
+
 h1 {
   font-size: 52px;
   font-family: "Barlow", sans-serif;
   font-weight: 500;
   color: rgb(62, 84, 163);
   line-height: 1.3;
+}
+
+.hero-desc {
+  line-height: 30px;
+  font-size: 20px;
+  margin: 20px 0 30px 0;
+  width: 85%;
 }
 
 .improve {
@@ -159,4 +280,298 @@ h1 {
   background-image: url("https://www.frontendmentor.io/static/images/zig-zag-underline.svg");
   background-position: center 100%;
   background-repeat: no-repeat;
+}
+
+.hero-github-login {
+  background-color: rgb(237, 44, 73);
+  border: 1px solid rgb(237, 44, 73);
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  font-family: "Heebo", sans-serif;
+  border-radius: 100px;
+  padding: 13px 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: 0.5s ease;
+}
+
+.hero-github-login:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: rgb(0 0 0 / 20%) 0px 0.5rem 1rem;
+}
+
+.github-hero {
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.icon-boxes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3.2rem;
+  margin: 0 25px;
+  padding: 0;
+}
+
+.how-it-works-container {
+  padding: 70px 0 100px 0;
+}
+
+.how-it-works-container h2 {
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 80px;
+  letter-spacing: 3px;
+}
+.icon-text-box {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 100%;
+}
+
+.icon-boxes-box {
+  margin: 0 auto;
+}
+
+.icon-text {
+  margin-top: 20px;
+}
+
+.icon-text h3 {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.icon-text p {
+  margin: 20px 0;
+}
+
+.latest-challenges {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: auto;
+  background: linear-gradient(
+    rgb(62, 84, 163) 0%,
+    rgb(62, 84, 163) 19rem,
+    transparent 19rem
+  );
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 95%;
+  margin: 0 auto;
+  padding-top: 69px;
+}
+
+/* .purple-background-div {
+  background-color: #3e54a3;
+  height: 300px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 95%;
+  margin: 0 auto;
+  padding-top: 69px;
+} */
+
+.latest-challenges h3 {
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.challenge-boxes-box {
+  margin: 0 auto;
+  width: 95%;
+  max-width: 1200px;
+}
+
+.challenge-boxes {
+  list-style-type: none;
+  position: relative;
+  display: grid;
+  margin-top: 70px;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  width: auto;
+}
+
+.challenge-box {
+  border-radius: 0.7rem;
+  overflow: hidden;
+  /* width: 95%; */
+  border: 1px solid rgb(219, 229, 230);
+  position: relative;
+  height: min-content;
+  margin: 0 auto;
+}
+
+.top-img {
+  overflow: hidden;
+  display: block;
+  padding: 0;
+}
+
+.top-img img {
+  transition: 0.5s ease;
+  height: 100%;
+  max-width: 100%;
+  /* border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem; */
+  backface-visibility: hidden;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease 0s;
+  width: 100%;
+}
+
+.top-img img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.details {
+  padding: 25px;
+  background-color: white;
+  height: 100%;
+  /* margin-top: -20px; */
+}
+
+.details-title {
+  font-size: 24px;
+  line-height: 1.2;
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+}
+
+.details-desc {
+  color: grey;
+  margin-top: 10px;
+}
+
+.langs {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.langs li {
+  margin-right: 10px;
+  font-family: "Barlow", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.html {
+  color: rgb(106, 190, 205);
+}
+
+.css {
+  color: rgb(62, 84, 163);
+}
+
+.js {
+  color: rgb(207, 99, 144);
+}
+
+.details-levels {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* .details-langs {
+  flex-wrap: wrap;
+} */
+
+.display-langs {
+  display: flex;
+  align-items: center;
+}
+
+.langs {
+  display: flex;
+  align-items: center;
+}
+
+.details-level {
+  border-radius: 5px;
+  align-items: center;
+  overflow: hidden;
+  font-size: 14px;
+  display: inline-flex;
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  height: min-content;
+  line-height: 18px;
+  margin: 10px 0;
+}
+
+.level-2 {
+  border: 1px solid #aad742;
+}
+
+.level-2 .lvl-num {
+  background-color: #aad742;
+}
+
+.level-2 .lvl-word {
+  color: #aad742;
+}
+
+.level-3 {
+  border: 1px solid rgb(241, 182, 4);
+}
+
+.level-3 .lvl-num {
+  background-color: rgb(241, 182, 4);
+}
+
+.level-3 .lvl-word {
+  color: rgb(241, 182, 4);
+}
+
+.lvl-num {
+  font-family: "Barlow", sans-serif;
+  width: 10%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+  padding: 2px 10px 2px 10px;
+}
+
+.lvl-word {
+  font-family: "Barlow", sans-serif;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+main {
+  max-width: 1550px;
+  margin: 0 auto;
 }
